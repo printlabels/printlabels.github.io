@@ -1,0 +1,184 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+.grid.\-top {
+    align-items: flex-start;
+}
+.grid.\-middle {
+    align-items: center;
+}
+.grid.\-bottom {
+    align-items: flex-end;
+}
+.grid.\-stretch {
+    align-items: stretch;
+}
+.grid.\-baseline {
+    align-items: baseline;
+}
+.grid.\-left {
+    justify-content: flex-start;
+}
+.grid.\-center {
+    justify-content: center;
+}
+.grid.\-right {
+    justify-content: flex-end;
+}
+.grid.\-between {
+    justify-content: space-between;
+}
+.grid.\-around {
+    justify-content: space-around;
+}
+.cell {
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+.cell.\-fill {
+    width: 0;
+    min-width: 0;
+    flex-grow: 1;
+}
+.cell.\-1of12 {
+    width: calc(100% * 1 / 12);
+}
+.cell.\-2of12 {
+    width: calc(100% * 2 / 12);
+}
+.cell.\-3of12 {
+    width: calc(100% * 3 / 12);
+}
+.cell.\-4of12 {
+    width: calc(100% * 4 / 12);
+}
+.cell.\-5of12 {
+    width: calc(100% * 5 / 12);
+}
+.cell.\-6of12 {
+    width: calc(100% * 6 / 12);
+}
+.cell.\-7of12 {
+    width: calc(100% * 7 / 12);
+}
+.cell.\-8of12 {
+    width: calc(100% * 8 / 12);
+}
+.cell.\-9of12 {
+    width: calc(100% * 9 / 12);
+}
+.cell.\-10of12 {
+    width: calc(100% * 10 / 12);
+}
+.cell.\-11of12 {
+    width: calc(100% * 11 / 12);
+}
+.cell.\-12of12 {
+    width: 100%;
+}
+
+* { 
+    box-sizing: border-box;
+    font-family: 'Golos Text';
+    font-size: 10pt;
+}
+
+.display_block
+{
+    display: block;
+}
+
+body
+{
+    background: #E8EAEC;
+}
+
+button {
+    position: relative; /* Обязательно нужно для позиционирования псевдоэлементов */
+}
+
+button::before,
+button::after {
+    content: ''; /* Необходимо для отображения псевдоэлементов */
+    position: absolute; /* Позиционирование псевдоэлементов внутри кнопки */
+    width: 100%; /* Ширина псевдоэлементов будет на 4px меньше ширины кнопки */
+    height: 100%; /* Высота псевдоэлементов будет на 4px меньше высоты кнопки */
+    top: 0px; /* Сдвигаем псевдоэлементы на 2px вниз, чтобы они были внутри границы кнопки */
+    left: 0px; /* Сдвигаем псевдоэлементы на 2px вправо, чтобы они были внутри границы кнопки */
+    border: 1px solid rgba(255,255,255,0.239093137254902); /* Устанавливаем границу для псевдоэлементов */
+    box-sizing: border-box; /* Учитываем границы в расчете ширины и высоты элементов */
+    border-radius: 2px;
+}
+
+button {
+    font-weight: 500;
+    color: #646263;
+    margin: 10px 0;
+    outline: 0;
+    border: 0;
+    height: 30px;
+    line-height: 26px;
+    text-align: center;
+    padding: 0 15px;
+    border-radius: 3px;
+    border: 1px solid #CCCDC8;
+    background: rgb(235,235,235);
+    background: linear-gradient(0deg, rgba(235,235,235,1) 0%, rgba(253,253,253,1) 100%);
+}
+
+button:hover {
+    cursor: pointer;
+    background: rgb(235,235,235);
+    background: linear-gradient(180deg, rgba(235,235,235,1) 0%, rgba(253,253,253,1) 100%);
+}
+
+.button-blue {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    border-color: #225C8A;
+    background: rgb(54,155,225);
+    background: linear-gradient(180deg, rgba(54,155,225,1) 0%, rgba(50,134,195,1) 100%);  
+}
+
+.button-blue:hover {
+    background: rgb(54,155,225);
+    background: linear-gradient(0deg, rgba(54,155,225,1) 0%, rgba(50,134,195,1) 100%);
+}
+
+.button-green {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    border-color: #77A250;
+    background: rgb(120,184,63);
+    background: linear-gradient(0deg, rgba(120,184,63,1) 0%, rgba(163,202,87,1) 100%);
+}
+
+.button-green:hover {
+    background: rgb(120,184,63);
+    background: linear-gradient(180deg, rgba(120,184,63,1) 0%, rgba(163,202,87,1) 100%);
+}
+
+.button-red {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    border-color: #8B2320;
+    background: rgb(205,52,44);
+    background: linear-gradient(0deg, rgba(205,52,44,1) 0%, rgba(239,62,64,1) 100%);
+}
+
+.button-red:hover {
+    background: rgb(205,52,44);
+    background: linear-gradient(180deg, rgba(205,52,44,1) 0%, rgba(239,62,64,1) 100%);
+}
+
+input
+{
+    border-radius: 3px;
+    border: 0;
+    outline: 0;
+    height: 30px;
+    line-height: 26px;
+    padding: 0 10px;
+    border: 1px solid #BEBEBE;
+}

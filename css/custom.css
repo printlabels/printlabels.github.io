@@ -1,0 +1,35 @@
+.wrapper
+{
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+}
+
+.print_page
+{
+    visibility: hidden;
+}
+
+ @media print {
+   	.wrapper {
+        display: none;
+    }
+        /*.print_page, .print_page * {
+            visibility: visible;
+        }*/
+        .print_page {
+        	visibility: visible;
+        	display: block;
+/*            position: absolute;
+            left: 0;
+            top: 0;*/
+            background: #ffffff;
+            color: #000000;
+            padding: 4mm;
+            padding-top: 2mm;
+            font-size: 6pt;
+            font-family: Arial;
+            font-weight: bold;
+        }
+    }

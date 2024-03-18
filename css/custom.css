@@ -31,5 +31,6 @@
             font-size: 6pt;
             font-family: Arial;
             font-weight: bold;
+            word-wrap: break-word;
         }
     }

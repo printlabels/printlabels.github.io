@@ -6,31 +6,135 @@
 	padding: 15px;
 }
 
-.print_page
+.print_page_58_60
 {
+    font-family: 'Roboto Condensed';
     visibility: hidden;
 }
 
- @media print {
-   	.wrapper {
+.print_page_58_28
+{
+    font-family: 'Roboto Condensed';
+    visibility: hidden;
+}
+
+.print_page_30_20
+{
+    font-family: 'Roboto Condensed';
+    visibility: hidden;
+}
+
+.version_info
+{
+    color: #898F95;
+}
+
+
+.label_58_60
+{
+    width: 195px;
+    height: 200px;
+    background: black;
+    border-radius: 7px;
+    background: #ffffff;
+    border: 1px dashed #5B5F63;
+}
+
+.label_58_28
+{
+    width: 195px;
+    height: 95px;
+    background: black;
+    border-radius: 7px;
+    background: #ffffff;
+    border: 1px dashed #5B5F63;
+}
+
+.label_30_20
+{
+    width: 100px;
+    height: 70px;
+    background: black;
+    border-radius: 7px;
+    background: #ffffff;
+    border: 1px dashed #5B5F63;
+}
+
+.line_count
+{
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px dashed #CCCDC8;
+    border-radius: 3px 0 0 3px;
+    height: 500px;
+    padding: 10px;
+    border-right: none;
+}
+
+.line_count p
+{
+    margin: 0;
+    color: #898F95;
+    text-align: right;
+}
+
+ @media print 
+ {
+   	.wrapper 
+    {
         display: none;
     }
-        /*.print_page, .print_page * {
-            visibility: visible;
-        }*/
-        .print_page {
-        	visibility: visible;
-        	display: block;
-/*            position: absolute;
-            left: 0;
-            top: 0;*/
-            background: #ffffff;
-            color: #000000;
-            padding: 4mm;
-            padding-top: 2mm;
-            font-size: 6pt;
-            font-family: Arial;
-            font-weight: bold;
-            word-wrap: break-word;
-        }
+    @page print_58_60 
+    {
+        size: 58mm 60mm;
     }
+
+    .print_page_58_60 
+    {
+        visibility: visible;
+        display: block;
+        line-height: 1;
+        background: #ffffff;
+        color: #000000;
+        padding: 2mm 3mm 1mm 3mm;
+        font-size: 6pt;
+        font-family: 'Roboto Condensed';
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        word-wrap: break-word;
+    }
+
+    .print_page_58_28 
+    {
+        visibility: visible;
+        display: block;
+        line-height: 1;
+        background: #ffffff;
+        color: #000000;
+        padding: 2mm 3mm 1mm 4mm;
+        font-size: 5pt;
+        font-family: 'Roboto Condensed';
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        word-wrap: break-word;
+    }
+
+    .print_page_30_20
+    {
+        visibility: visible;
+        display: block;
+        line-height: 1;
+        background: #ffffff;
+        color: #000000;
+        padding: 1mm 3mm 1mm 2mm;
+        font-size: 5pt;
+        font-family: 'Roboto Condensed';
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        word-wrap: break-word;
+         hyphens: auto;
+    }
+}

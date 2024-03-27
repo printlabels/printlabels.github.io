@@ -8,6 +8,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Golos+Text&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Victor+Mono:wght@100..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/framework.css">
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
@@ -16,12 +19,68 @@
 </head>
 <body>
 	<div id="app">
-		<div class="wrapper">
-				<p>Вставьте текст в поле ниже</p>
-				<textarea rows="25" cols="50" v-model="text"></textarea>
-				<button class="button-blue display_block" @click="printPage">Печать</button>	
-		</div>
-		<div class="print_page">{{ text }}</div>
+		
+			<div class="grid">
+				<div class="cell -6of12">
+					<div class="wrapper">
+						<p class="version_info">Печать этикеток, версия 0.0.2</p>
+						<p>Вставьте текст в поле ниже</p>
+						<div class="grid">
+							<div class="cell -1of12 line_count">
+								 <p v-for="lineNumber in [...Array(30).keys()].map(x => x + 1)" :key="lineNumber">{{ lineNumber }}</p>
+							</div>
+							<div class="cell -11of12">
+								<textarea v-model="text" rows="30" @input="updateSymbolsCount"></textarea>
+							</div>
+						</div>
+						<p>Количество символов: {{ symbolsCount }}</p>
+						<button class="display_block" @click="printPage" :class="{ 'button-red': selectedTemplate === null, 'button-blue': selectedTemplate !== null }">Печать</button>	
+					</div>
+				</div>
+				<div class="cell -6of12">
+					<div class="wrapper">
+
+					<p>Выберите размер этикетки</p>
+
+					<div class="card">
+						<div class="card_heading">От весов (58*60)</div>
+						<div class="card-content">
+							<div class="label_58_60"></div>
+							<button @click="selectedTemplate = 0" :class="{ 'button-green': selectedTemplate === 0 }">Выбрать</button>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card_heading">Маленькая (58*28)</div>
+						<div class="card-content">
+							<div class="label_58_28"></div>
+							<button @click="selectedTemplate = 1" :class="{ 'button-green': selectedTemplate === 1 }">Выбрать</button>
+						</div>
+					</div>
+
+
+					<div class="card">
+						<div class="card_heading">Стандартная (30*20)</div>
+						<div class="card-content">
+							<div class="label_30_20"></div>
+							<button @click="selectedTemplate = 2" :class="{ 'button-green': selectedTemplate === 2 }">Выбрать</button>
+						</div>
+					</div>
+				</div>
+
+				</div>
+			</div>
+		
+
+			<template v-if="selectedTemplate == 0">
+				<div class="print_page_58_60" v-html="formatText()"></div>
+			</template>
+			<template v-if="selectedTemplate == 1">
+				<div class="print_page_58_28" v-html="formatText()"></div>
+			</template>
+			<template v-if="selectedTemplate == 2">
+				<div class="print_page_30_20" v-html="formatText()"></div>
+			</template>
 	</div>
 
 	<script type="text/javascript">
@@ -29,18 +88,61 @@
   			el: '#app',
   			data: 
   			{
-    			text: '1',
-    			isPrint: false
+    			text: '',
+    			isPrint: false,
+    			selectedTemplate: null,
+    			symbolsCount: 0
   			},
   			methods:
   			{
   				printPage: function()
   				{
+  					if(this.selectedTemplate == null)
+  					{
+  						alert('Сначала выберите шаблон');
+  						return true;
+  					}
+
+  					var lineCount = (this.text.match(/\n/g) || []).length + 1;
+
+
+  					if(this.selectedTemplate == 0 && this.text.length > 1200)
+  					{
+  						alert('Максимальное количество символов (включая пробелы) для этого шаблона - 1200');
+  						return true;
+  					}
+
+
+  					if(this.selectedTemplate == 1 && this.text.length > 750)
+  					{
+  						alert('Максимальное количество символов (включая пробелы) для этого шаблона - 750');
+  						return true;
+  					}
+
+
+  					if(this.selectedTemplate == 2 && this.text.length > 250)
+  					{
+  						alert('Максимальное количество символов (включая пробелы) для этого шаблона - 250');
+  						return true;
+  					}
+
   					this.isPrint = true;
   					setTimeout(function() {
 				        window.print();
 				    }, 100);
-  				}
+  				},
+  				formatText: function() 
+  				{
+				    return this.text.replace(/\n/g, '<br>')
+				},
+				selectTemplate: function(template)
+				{
+					this.selectedTemplate = template;
+				},
+				updateSymbolsCount: function() 
+				{
+			      this.symbolsCount = this.text.length;
+			    }
   			}
 		});
 

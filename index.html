@@ -106,21 +106,21 @@
   					var lineCount = (this.text.match(/\n/g) || []).length + 1;
 
 
-  					if(this.selectedTemplate == 0 && this.text.length > 1200)
+  					if(this.selectedTemplate == 0 && this.text.length > 1600)
   					{
-  						alert('Максимальное количество символов (включая пробелы) для этого шаблона - 1200');
+  						alert('Максимальное количество символов (включая пробелы) для этого шаблона - 1600');
   						return true;
   					}
 
 
-  					if(this.selectedTemplate == 1 && this.text.length > 750)
+  					if(this.selectedTemplate == 1 && this.text.length > 950)
   					{
   						alert('Максимальное количество символов (включая пробелы) для этого шаблона - 750');
   						return true;
   					}
 
 
-  					if(this.selectedTemplate == 2 && this.text.length > 250)
+  					if(this.selectedTemplate == 2 && this.text.length > 350)
   					{
   						alert('Максимальное количество символов (включая пробелы) для этого шаблона - 250');
   						return true;
